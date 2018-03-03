@@ -1,0 +1,12 @@
+[user]
+	name = maitake
+	email = kamasaki765@gmail.com
+[push]
+	default = simple
+[alias]
+    cm = commit -m
+    gl = log --graph --oneline --decorate
+    st = status
+    co = checkout
+    b = branch
+    nffm = merge --no-ff

@@ -57,6 +57,8 @@ set mouse=a
 set ruler
 " move cursor automatically to where it were when you start editing new line
 set autoindent
+" use c style indent
+set cindent
 " be home directory when editor is started
 "cd $home
 
@@ -69,4 +71,4 @@ autocmd BufReadPost *
   \   exe "normal! g`\"" |
   \ endif
 
-source ~/key.vimrc
+source ~/key-config.vimrc

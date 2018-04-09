@@ -59,8 +59,9 @@ set ruler
 set autoindent
 " use c style indent
 set cindent
-" be home directory when editor is started
-"cd $home
+
+filetype plugin indent on
+syntax on
 
 " I just copied and pasted the following:
 " When editing a file, always jump to the last known cursor position.

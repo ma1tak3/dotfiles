@@ -1,3 +1,27 @@
+" ========================================================================
+" plugin
+" ========================================================================
+if !isdirectory($HOME . '/.vim/dein')
+    !curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/.vim/dein_installer.sh
+    !sh ~/.vim/dein_installer.sh ~/.vim/dein
+endif
+
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+if dein#load_state('~/.vim/dein')
+    call dein#begin('~/.vim/dein')
+
+    call dein#add('~/.vim/dein')
+    call dein#add('Shougo/deoplete.nvim')
+    call dein#add('scrooloose/nerdtree')
+    if !has('nvim')
+        call dein#add('roxma/nvim-yarp')
+        call dein#add('roxma/vim-hug-neovim-rpc')
+    endif
+
+    call dein#end()
+    call dein#save_state()
+endif
+
 " ========================================================================= 
 " settings
 " ========================================================================= 
@@ -33,6 +57,8 @@ set shiftwidth=4
 " delete indent and end of line by pressing backspace
 set backspace=indent,eol,start
 
+au BufNewFile,BufRead \(*.js\|*.html\|*.php\) set shiftwidth=2 tabstop=2 
+
 " keep 50 lines of command line history
 set history=50
 " do not creat backup files, viminfo files, and undo files.
@@ -63,13 +89,25 @@ set cindent
 filetype plugin indent on
 syntax on
 
+source ~/.vim/syntax/scala.vim
+
 " I just copied and pasted the following:
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
 " (happens when dropping a file on gvim).
 autocmd BufReadPost *
-  \ if line("'\"") >= 1 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
+            \ if line("'\"") >= 1 && line("'\"") <= line("$") |
+            \   exe "normal! g`\"" |
+            \ endif
 
-source ~/key-config.vimrc
+" ================================================
+" Key mapping and command definition
+" ================================================
+"" exit insert mode with jj (comment out)
+"inoremap <silent> jj <ESC>
+" edit vimrc with <Space>.
+nnoremap <Space>. <C-w>n:edit $MYVIMRC<CR>
+" edit gvimrc with <Space>,
+nnoremap <Space>, <C-w>n:edit $MYGVIMRC<CR>
+" toggle NERDTree
+nnoremap <Space>nt :NERDTreeToggle<CR>

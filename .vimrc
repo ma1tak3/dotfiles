@@ -12,7 +12,15 @@ if dein#load_state('~/.vim/dein')
 
     call dein#add('~/.vim/dein')
     call dein#add('Shougo/deoplete.nvim')
+    call dein#add('Shougo/neco-vim')
+    call dein#add('Shougo/neco-syntax')
+
     call dein#add('scrooloose/nerdtree')
+    call dein#add('vim-airline/vim-airline')
+
+    call dein#add('derekwyatt/vim-scala')
+
+
     if !has('nvim')
         call dein#add('roxma/nvim-yarp')
         call dein#add('roxma/vim-hug-neovim-rpc')
@@ -21,6 +29,8 @@ if dein#load_state('~/.vim/dein')
     call dein#end()
     call dein#save_state()
 endif
+
+let g:deoplete#enable_at_startup = 1
 
 " ========================================================================= 
 " settings
@@ -88,8 +98,6 @@ set cindent
 
 filetype plugin indent on
 syntax on
-
-source ~/.vim/syntax/scala.vim
 
 " I just copied and pasted the following:
 " When editing a file, always jump to the last known cursor position.

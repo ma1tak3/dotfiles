@@ -11,14 +11,16 @@ if dein#load_state('~/.vim/dein')
     call dein#begin('~/.vim/dein')
 
     call dein#add('~/.vim/dein')
-    call dein#add('Shougo/deoplete.nvim')
-    call dein#add('Shougo/neco-vim')
-    call dein#add('Shougo/neco-syntax')
 
+    call dein#add('Shougo/denite.nvim')
     call dein#add('scrooloose/nerdtree')
     call dein#add('vim-airline/vim-airline')
 
+    call dein#add('tomtom/tcomment_vim')
+
+    call dein#add('vim-syntastic/syntastic')
     call dein#add('derekwyatt/vim-scala')
+    call dein#add('gre/play2vim')
 
 
     if !has('nvim')

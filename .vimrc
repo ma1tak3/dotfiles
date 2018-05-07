@@ -12,27 +12,52 @@ if dein#load_state('~/.vim/dein')
 
     call dein#add('~/.vim/dein')
 
-    call dein#add('Shougo/denite.nvim')
-    call dein#add('scrooloose/nerdtree')
-    call dein#add('vim-airline/vim-airline')
+    if !has('nvim')
+        call dein#add('roxma/nvim-yarp')
+        call dein#add('roxma/vim-hug-neovim-rpc')
+    endif
 
-    call dein#add('tomtom/tcomment_vim')
+    call dein#add('Shougo/deoplete.nvim')
+    call dein#add('Shougo/neco-vim')
+    call dein#add('Shougo/neco-syntax')
+    call dein#add('Shougo/neosnippet.vim')
+    call dein#add('Shougo/neosnippet-snippets')
+    call dein#add('Shougo/denite.nvim')
 
     call dein#add('vim-syntastic/syntastic')
     call dein#add('derekwyatt/vim-scala')
     call dein#add('gre/play2vim')
 
-
-    if !has('nvim')
-        call dein#add('roxma/nvim-yarp')
-        call dein#add('roxma/vim-hug-neovim-rpc')
-    endif
+    call dein#add('tomasiser/vim-code-dark')
+    call dein#add('scrooloose/nerdtree')
+    call dein#add('tomtom/tcomment_vim')
 
     call dein#end()
     call dein#save_state()
 endif
 
 let g:deoplete#enable_at_startup = 1
+colorscheme codedark
+let g:airline_theme='codedark'
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+            \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+    set conceallevel=2 concealcursor=niv
+endif
 
 " ========================================================================= 
 " settings
@@ -91,6 +116,13 @@ set wrapscan
 
 " use mouse
 set mouse=a
+" in terminal
+if !has("gui_running")
+    set term=xterm
+    set t_Co=256
+    let &t_AB="\e[48;5;%dm"
+    let &t_AF="\e[38;5;%dm"
+endif
 " show the cursor position all the time
 set ruler
 " move cursor automatically to where it were when you start editing new line

@@ -24,7 +24,6 @@ if dein#load_state('~/.vim/dein')
     call dein#add('Shougo/neosnippet-snippets')
     call dein#add('Shougo/denite.nvim')
 
-    call dein#add('vim-syntastic/syntastic')
     call dein#add('derekwyatt/vim-scala')
     call dein#add('gre/play2vim')
 
@@ -36,8 +35,8 @@ if dein#load_state('~/.vim/dein')
     call dein#save_state()
 endif
 
-let g:deoplete#enable_at_startup = 1
-colorscheme codedark
+" let g:deoplete#enable_at_startup = 1
+"colorscheme codedark
 let g:airline_theme='codedark'
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
@@ -47,10 +46,10 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><TAB>
+ \ pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ?
+ \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
             \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 

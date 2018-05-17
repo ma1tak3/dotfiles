@@ -1,5 +1,5 @@
 [user]
-	name = maitake
+	name = kamasaki
 	email = kamasaki765@gmail.com
 [push]
 	default = simple
@@ -10,3 +10,5 @@
     co = checkout
     b = branch
     nffm = merge --no-ff
+[core]
+	editor = vim

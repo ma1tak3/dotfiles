@@ -6,7 +6,7 @@
 [alias]
     cm = commit -m
     gl = log --graph --oneline --decorate
-    st = status
+	st = status --short
     co = checkout
     b = branch
     nffm = merge --no-ff
